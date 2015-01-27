@@ -12,7 +12,7 @@ public class BubbleSort {
 
         int[] nums = {9,7,5,3,2,1};
 
-        int max = nums.length - 1;
+        int max = nums.length - 1;  
         boolean isSwap = true;
 
         while(max>0 && isSwap){
@@ -33,6 +33,7 @@ public class BubbleSort {
 
         System.out.println(Arrays.toString(nums));
 
+        "".compareTo("");
 
     }
 }
