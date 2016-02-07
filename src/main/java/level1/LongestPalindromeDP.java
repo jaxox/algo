@@ -32,6 +32,9 @@ public class LongestPalindromeDP {
                 if (head == tail && (i < 2 || matrix[j + 1][j + i - 1]==1)) {
 
                         matrix[j][j + i] = 1;
+                        // When comparing the head and tail characters of each substrings,
+                        // it starts from the shortest ones to the longest ones. when the i ( outer for-loop) is bigger
+                        // than the highest we can safely say that the current substring is at least equal in length or longer.
                         if (i > highest) {
                             highest = i;
                             start = j;
