@@ -22,17 +22,18 @@ public class LongestPalindromeSubstring {
      * start and end characters are use for preventing index out of bound, otherwise the program has
      * to check the is the expanding index is within the range.
      *
-     * For example, "banana" --> “<|b|a|n|a|n|a|>”.
+     * For example, "banana" --> “|b|a|n|a|n|a|”.
      **/
     public static String transform(String s) {
 
-        StringBuilder sb = new StringBuilder(start + pipe);
+        StringBuilder sb = new StringBuilder( pipe);
 
         for(char c : s.toCharArray()){
             sb.append(c).append(pipe);
         }
 
-        return sb.append(end).toString();
+        System.out.println(s + " -->" + sb.toString());
+        return sb.toString();
     }
 
 
@@ -55,14 +56,17 @@ public class LongestPalindromeSubstring {
         return index;
     }
 
+
     public static String longestPalindrome(int[] result, String s){
         // Find the maximum element in P.
         int centerIndex = largestElement(result);
         int maxLen = result[centerIndex];
+        int origStrStart = (centerIndex - maxLen)/2;
+        int origStrEnd = origStrStart + maxLen;
 
-        System.out.println(Arrays.toString(result));
+        System.out.println("Result=" + Arrays.toString(result));
 
-        return s.substring((centerIndex - maxLen)/2, maxLen+1 );
+        return s.substring(origStrStart, origStrEnd);
     }
 
 

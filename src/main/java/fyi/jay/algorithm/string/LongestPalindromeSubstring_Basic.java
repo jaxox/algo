@@ -1,5 +1,8 @@
 package fyi.jay.algorithm.string;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * O(N^2) Approach - based on Manacher's algorithm with the DP that utilized
  * the symmetric property. Thus I can show how we can improve from this basic algorithm
@@ -21,8 +24,8 @@ public class LongestPalindromeSubstring_Basic extends LongestPalindromeSubstring
         // Index i is used for finding the palindrome at the center, the center starts at 1 and the for-loop starts at the next char of center
         for (int i = 1; i < tSize-1; i++) {
 
-            // Attempt to expand the current palindrome substring from the center at the index i
-            while ( t.charAt(i + 1 + result[i]) == t.charAt(i - 1 - result[i])){
+            // Check the array is not out of bound and attempt to expand the palindrome centered at i
+            while ( i - 1 - result[i] >=0 && i + 1 + result[i] < tSize && t.charAt(i + 1 + result[i]) == t.charAt(i - 1 - result[i])){
                 result[i]++;
             }
         }
@@ -32,7 +35,12 @@ public class LongestPalindromeSubstring_Basic extends LongestPalindromeSubstring
     }
 
     public static void main(String[] args) {
-        System.out.println(LongestPalindromeSubstring_Basic.longestPalindrome("bana"));
+        //Test cases
+        List<String> strs = Arrays.asList("a", "an", "ana", "anana", "aa", "aaa", "aaaa", "taaae", "tcaaar");
+
+        for (String str: strs) {
+            System.out.println("LPS=" + LongestPalindromeSubstring_Basic.longestPalindrome(str) + "\n" );
+        }
     }
 
 }

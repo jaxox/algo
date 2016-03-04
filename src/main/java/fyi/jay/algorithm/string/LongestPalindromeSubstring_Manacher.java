@@ -17,7 +17,7 @@ public class LongestPalindromeSubstring_Manacher extends LongestPalindromeSubstr
     public static String longestPalindrome(String s) {
 
         String t = transform(s);
-        System.out.println(s + " -->" +t);
+
 
         int tSize = t.length();
 
@@ -54,15 +54,8 @@ public class LongestPalindromeSubstring_Manacher extends LongestPalindromeSubstr
             }
         }
 
-        // Find the maximum element in P.
-        int centerIndex = largestElement(result);
-        int maxLen = result[centerIndex];
-        int origStrStart = (centerIndex - maxLen)/2;
-        int origStrEnd = origStrStart + maxLen;
-
-        System.out.println("Result=" + Arrays.toString(result));
-
-        return s.substring(origStrStart, origStrEnd);
+        //Using the result to get the longest palindrome
+        return longestPalindrome(result,s);
     }
 
 
